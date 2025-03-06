@@ -1,0 +1,14 @@
+C:\Laivu_musis\bin\Debug\net6.0\LaivuMusis.exe
+C:\Laivu_musis\bin\Debug\net6.0\LaivuMusis.deps.json
+C:\Laivu_musis\bin\Debug\net6.0\LaivuMusis.runtimeconfig.json
+C:\Laivu_musis\bin\Debug\net6.0\LaivuMusis.dll
+C:\Laivu_musis\bin\Debug\net6.0\LaivuMusis.pdb
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.AssemblyInfoInputs.cache
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.AssemblyInfo.cs
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.csproj.CoreCompileInputs.cache
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.dll
+C:\Laivu_musis\obj\Debug\net6.0\refint\LaivuMusis.dll
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.pdb
+C:\Laivu_musis\obj\Debug\net6.0\LaivuMusis.genruntimeconfig.cache
+C:\Laivu_musis\obj\Debug\net6.0\ref\LaivuMusis.dll

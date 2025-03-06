@@ -1,0 +1,106 @@
+Laivų Mūšio Standartai ir Taisyklės
+
+Bendros Taisyklės
+
+1.1. Žaidime dalyvauja du žaidėjai.
+1.2. Kiekvienas žaidėjas turi savo laivų lentą (10x10).
+1.3. Laivai turi būti išdėstyti pagal nustatytas taisykles (pvz., vienas 4 dalių laivas, du 3 dalių, trys 2 dalių ir keturi 1 dalies laivai).
+1.4. Žaidėjai atlieka ėjimus paeiliui, bandydami pataikyti į priešo laivus.
+1.5. Žaidimo eiga bei rezultatai turi būti registruojami tekstiniame faile.
+
+Standartizuota Duomenų Struktūra
+
+2.1. Kiekvieno žaidėjo lenta reprezentuojama 10x10 matrica.
+2.2. Laivai lentelėje žymimi skaičiais (pvz., 1 - vienvietis laivas, 2 - dvivietis ir t.t.).
+2.3. Tuščios vietos žymimos simboliu '.'
+2.4. Smūgių vietos fiksuojamos simboliais:
+
+'X' - pataikyta,
+
+'O' - nepataikyta.
+
+Specialios Bombos
+
+3.1. Specialios bombos gali atlikti papildomus veiksmus, pvz.:
+
+"Sprogstamoji banga" - pataikius į tašką sunaikina aplinkinius 8 langelius.
+
+"Radaras" - atskleidžia tam tikrą priešo teritorijos plotą.
+
+"Grandininė reakcija" - pataikius iš eilės, suteikiamas papildomas ėjimas.
+3.2. Kiekvienas žaidėjas turi ribotą specialių bombų kiekį per žaidimą.
+
+Žaidimo Eiga
+
+4.1. Pradedantis žaidėjas pasirenkamas atsitiktiniu būdu.
+4.2. Žeaidejai paeiliui atlieka ėjimus ir juos registruoja faile.
+4.3. Kiekvienas ėjimas registruojamas formatu:
+
+"Žeaidejas1 A5 HIT"
+
+"Žeaidejas2 C3 MISS"
+4.4. Jei visi vieno žaidėjo laivai sunaikinami, kitas žaidėjas laimi.
+4.5. žaidimo pabaiga registruojama tekstiniame faile: "Žeaidejas1 WINNER".
+
+Failo Formatavimas
+
+5.1. Pradinių lentų išdėstymas saugomas faile game_state.txt.
+5.2. Žaidimo eiga registruojama game_log.txt faile, kiekviena eilutė turi turėti aiškų formatą.
+5.3. Failo formatas:
+
+--- GAME START ---
+Player1 starts
+Player1 A5 HIT
+Player2 C3 MISS
+...
+Player1 WINNER
+--- GAME END ---
+
+Papildomos Sąlygos
+
+6.1. Žaidėjai negali šaudyti į tą pačią vietą du kartus.
+6.2. Jei naudojama speciali bomba, ji turi būti aiškiai nurodyta faile, pvz.:
+
+"Player1 B4 SPECIAL-BOMB HIT"
+6.3. Žaidimas gali būti įrašomas ir atkuriamas iš failo.
+
+lentos dydis Min 8x8 max iki 20x20, turi buti validacija tokia kad laivas neislystu is lentos ir kad visi laivai tilptu vieno zmogaus.
+pavizdys
+         A   B     C     D     E    F      G       H     I      J
+1       A1  B1   C1    D1   E1    F1    G1    H1    I1    J1
+2      A2  B2 C2   D2   E2   F2   G2    H2  I2    J2
+3     A3  B3  C3   D3   E3   F3   G3   H3  I3    J3
+4     A4  B4  C4   D4   E4  F4   G4   H4   I4    J4
+5     A5  B5  C5   D5   E5   F5   G5   H5   I5    J5
+6     A6  B6  C6   D6   E6   F6   G6   H6   I6    J6
+7     A7   B7   C7   D7   E7   F7    G7   H7   I7    J7
+8    A8   B8  C8   D8   E8   F8   G8   H8   I8   J8
+9    A9   B9  C9   D9   E9   F9   G9   H9   I9   J9
+10  A10 B10 C10 D10 E10 F10 G10 H10 I10 J10
+
+
+pataikyta - X
+nepataikyta - O
+laivo zymejimas-#
+
+laivo validacija laivas su kitu laivu turi palaikyti bent vieno langelio tarpa (pvz. # E6 #)
+laivukai:
+1x 5 ilgio
+2x 4 ilgio
+7x 3 ilgio
+5x 2 ilgio 
+i laivo dali pataikius gali sauti dar karta
+
+bombos:
+2x "Radaras" - atskleidžia tam tikrą priešo teritorijos plotą(random kazkuria dali lentos).
+2x "Sprogstamoji banga" - pataikius į tašką sunaikina aplinkinius 8 langelius(3x3).
+
+
+Standartas 
+skaitymas apsnekejom tai bet tai pakeisti nera sunku 
+4 failai:
+player1_cfg failas(cia susiraso player1 laivus)
+player2_cfg failas(cia susiraso player2 laivus)
+zaidimo_log failas(surasoma zaidimo visa eiga)
+taisykles failas(taisykliu validacija taip galedamas pries zaidimas nuspresti lentos dydi laivu kieki bombu kieki ir t.t.)
+failuose turi butinai rasyti koks langelis buvo pasirinktas laivam bombos suviui ir t.t.(formatas E5, E4, A1,...)

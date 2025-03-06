@@ -1,0 +1,10 @@
+--- GAME START ---
+Player2 starts
+Player2 B2 MISS
+Player1 A2 MISS
+Player2 A1 HIT
+Player2 B1 HIT
+Player2 C1 HIT
+Player2 D1 HIT
+Player2 E1 HIT SHIP DESTROYED
+Player2 F1 MISS
