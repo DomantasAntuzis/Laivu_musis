@@ -162,6 +162,23 @@ namespace LaivuMusis
 			return ships.TrueForAll(s => s.IsDestroyed);
 		}
 
+		public void DisplayBoard(bool hideShips = false)
+		{
+			Console.WriteLine($"{name}'s Board:");
+			board.DisplayBoard(hideShips);
+		}
+
+		public void SaveBoardToFile(string filePath, bool hideShips = false)
+		{
+			using (StreamWriter writer = new StreamWriter(filePath, true))
+			{
+				// Nothing to write here - we will let the board do the actual writing
+			}
+
+			// Append the board to the file
+			board.SaveBoardToFile(filePath, hideShips);
+		}
+
 		public string Name => name;
 		public GameBoard Board => board;
 	}

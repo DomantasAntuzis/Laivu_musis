@@ -42,6 +42,11 @@ namespace LaivuMusis
 			{
 				AppendToLog($"Destroyed ships at: {string.Join(", ", result.DestroyedShips)}");
 			}
+
+			if (result.MissedPositions.Count > 0 && bombType == BombType.Explosive)
+			{
+				AppendToLog($"Missed at: {string.Join(", ", result.MissedPositions)}");
+			}
 		}
 
 		public void LogGameEnd(string winner)

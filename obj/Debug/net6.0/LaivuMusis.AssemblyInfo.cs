@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LaivuMusis")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a98931ed7552ea4fcb21a490f851ba72b891f388")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d61a6c17707f09295e00f1ec862f8d4b789360a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("LaivuMusis")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LaivuMusis")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

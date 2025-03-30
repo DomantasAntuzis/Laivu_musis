@@ -12,6 +12,10 @@ namespace LaivuMusis
 	{
 		public List<string> RevealedShips { get; set; } = new List<string>();
 		public List<string> DestroyedShips { get; set; } = new List<string>();
+		public List<string> MissedPositions { get; set; } = new List<string>();
+
+		// Boolean property to check if any ships were destroyed
+		public bool HasHitShips => DestroyedShips.Count > 0;
 	}
 
 	public enum BombType

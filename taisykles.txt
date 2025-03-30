@@ -1,4 +1,4 @@
-Lentos dydis: 10
+Lentos dydis: 15
 Laivų kiekis:
 - 1x 5 ilgio
 - 2x 4 ilgio

@@ -1,8 +1,3 @@
 --- GAME START ---
 Player2 starts
-Player2 G1 HIT
-Player2 G2 HIT
-Player2 G3 HIT SHIP DESTROYED
-Player2 G4 MISS
-Player1 A1 HIT
-Player1 B1 HIT
+Player2 N14 MISS

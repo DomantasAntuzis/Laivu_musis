@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LaivuMusis
 {
@@ -142,10 +143,17 @@ namespace LaivuMusis
 
 					if (IsValidPosition(newRow, newCol))
 					{
+						// If there's a ship, mark it as hit
 						if (char.IsDigit(board[newRow, newCol]))
 						{
 							board[newRow, newCol] = 'X';
 							result.DestroyedShips.Add($"{ConvertToCoordinates(newRow, newCol)}");
+						}
+						// Mark misses only if the position hasn't been hit already
+						else if (board[newRow, newCol] == '.')
+						{
+							board[newRow, newCol] = 'O';
+							result.MissedPositions.Add($"{ConvertToCoordinates(newRow, newCol)}");
 						}
 					}
 				}
@@ -204,10 +212,135 @@ namespace LaivuMusis
 			return (row, col);
 		}
 
-		private string ConvertToCoordinates(int row, int col)
+		public string ConvertToCoordinates(int row, int col)
 		{
 			var letter = (char)('A' + col);
 			return $"{letter}{row + 1}";
+		}
+
+		// Method to display the board
+		public void DisplayBoard(bool hideShips = false)
+		{
+			// Print column headers
+			Console.Write("   ");
+			for (int col = 0; col < size; col++)
+			{
+				Console.Write($" {(char)('A' + col)} ");
+			}
+			Console.WriteLine();
+
+			// Print rows
+			for (int row = 0; row < size; row++)
+			{
+				// Print row number with proper padding
+				Console.Write($"{row + 1,2} ");
+
+				// Print board cells
+				for (int col = 0; col < size; col++)
+				{
+					char cell = board[row, col];
+
+					// If hideShips is true, don't show ship locations (for opponent's board)
+					if (hideShips && char.IsDigit(cell))
+					{
+						Console.Write(" . ");
+					}
+					else if (cell == 'X')
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.Write(" X ");
+						Console.ResetColor();
+					}
+					else if (cell == 'O')
+					{
+						Console.ForegroundColor = ConsoleColor.Blue;
+						Console.Write(" O ");
+						Console.ResetColor();
+					}
+					else if (char.IsDigit(cell))
+					{
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.Write($" {cell} ");
+						Console.ResetColor();
+					}
+					else
+					{
+						Console.Write(" . ");
+					}
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine();
+		}
+
+		// Method to save board state to a file
+		public void SaveBoardToFile(string filePath, bool hideShips = false)
+		{
+			using (StreamWriter writer = new StreamWriter(filePath, true))
+			{
+				// Write column headers
+				writer.Write("   ");
+				for (int col = 0; col < size; col++)
+				{
+					writer.Write($" {(char)('A' + col)} ");
+				}
+				writer.WriteLine();
+
+				// Write rows
+				for (int row = 0; row < size; row++)
+				{
+					// Write row number with proper padding
+					writer.Write($"{row + 1,2} ");
+
+					// Write board cells
+					for (int col = 0; col < size; col++)
+					{
+						char cell = board[row, col];
+
+						// If hideShips is true, don't show ship locations (for opponent's board)
+						if (hideShips && char.IsDigit(cell))
+						{
+							writer.Write(" . "); // Empty space (hiding opponent's ships)
+						}
+						else if (cell == 'X')
+						{
+							writer.Write(" X "); // Hit
+						}
+						else if (cell == 'O')
+						{
+							writer.Write(" O "); // Miss
+						}
+						else if (char.IsDigit(cell))
+						{
+							writer.Write($" {cell} "); // Ship
+						}
+						else
+						{
+							writer.Write(" . "); // Empty space
+						}
+					}
+					writer.WriteLine();
+				}
+
+				// Add legend at the bottom
+				writer.WriteLine();
+				if (!hideShips)
+				{
+					writer.WriteLine("Legend:");
+					writer.WriteLine("  . = empty water");
+					writer.WriteLine("  2-5 = your ships (number indicates ship size)");
+					writer.WriteLine("  X = hit on a ship");
+					writer.WriteLine("  O = missed shot");
+				}
+				else
+				{
+					writer.WriteLine("Legend:");
+					writer.WriteLine("  . = unknown (either empty water or undiscovered ship)");
+					writer.WriteLine("  X = your hit on opponent's ship");
+					writer.WriteLine("  O = your missed shot");
+				}
+				writer.WriteLine();
+			}
 		}
 
 		public int Size => size;
