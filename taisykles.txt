@@ -7,3 +7,11 @@ Laivų kiekis:
 Bombų kiekis:
 - 2x Radar
 - 2x Sprogstamoji banga 
+
+Configuration File Format:
+Each line represents a ship in the format: [COORDINATES] [SIZE] [ORIENTATION]
+- COORDINATES: Starting position (e.g., A1, B5)
+- SIZE: Ship size (2-5)
+- ORIENTATION: H for horizontal, V for vertical
+
+Example: A1 5 H - Places a size 5 ship horizontally starting at A1 

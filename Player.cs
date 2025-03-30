@@ -40,24 +40,30 @@ namespace LaivuMusis
 						{
 							try
 							{
-								// Try horizontal placement first
-								var ship = new Ship(coordinates, shipSize, true);
+								bool isHorizontal = true; // Default to horizontal
+
+								// Check if orientation is specified
+								if (parts.Length >= 3)
+								{
+									string orientation = parts[2].Trim().ToUpper();
+									if (orientation == "V")
+									{
+										isHorizontal = false;
+									}
+									else if (orientation != "H")
+									{
+										throw new ArgumentException($"Invalid orientation: {orientation}. Use 'H' for horizontal or 'V' for vertical.");
+									}
+								}
+
+								var ship = new Ship(coordinates, shipSize, isHorizontal);
 								if (board.CanPlaceShip(ship))
 								{
-									PlaceShip(coordinates, shipSize, true);
+									PlaceShip(coordinates, shipSize, isHorizontal);
 								}
 								else
 								{
-									// If horizontal doesn't work, try vertical
-									ship = new Ship(coordinates, shipSize, false);
-									if (board.CanPlaceShip(ship))
-									{
-										PlaceShip(coordinates, shipSize, false);
-									}
-									else
-									{
-										throw new InvalidOperationException($"Cannot place ship at position {coordinates} with size {shipSize} in either orientation");
-									}
+									throw new InvalidOperationException($"Cannot place ship at position {coordinates} with size {shipSize} and orientation {(isHorizontal ? "horizontal" : "vertical")}");
 								}
 							}
 							catch (InvalidOperationException ex)
