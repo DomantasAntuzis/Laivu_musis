@@ -118,6 +118,9 @@ namespace LaivuMusis
 			Console.WriteLine($"{currentPlayer.Name} attacks {coordinates}");
 			Console.WriteLine($"Board states updated in {(currentPlayer == player1 ? Player1BoardFile : Player2BoardFile)}");
 
+			// Display special bomb counts for both players
+			DisplaySpecialBombCounts();
+
 			if (result.IsHit)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
@@ -150,6 +153,30 @@ namespace LaivuMusis
 			currentPlayer = targetPlayer;
 		}
 
+		private void DisplaySpecialBombCounts()
+		{
+			if (player1 == null || player2 == null) return;
+
+			Console.WriteLine("\nSpecial Bombs Remaining:");
+			Console.WriteLine("----------------------");
+
+			// Player 1's bombs
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write($"{player1.Name}: ");
+			Console.ResetColor();
+			Console.Write($"Radar: {player1.GetBombCount(BombType.Radar)} | ");
+			Console.Write($"Explosive: {player1.GetBombCount(BombType.Explosive)}");
+			Console.WriteLine();
+
+			// Player 2's bombs
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write($"{player2.Name}: ");
+			Console.ResetColor();
+			Console.Write($"Radar: {player2.GetBombCount(BombType.Radar)} | ");
+			Console.Write($"Explosive: {player2.GetBombCount(BombType.Explosive)}");
+			Console.WriteLine("\n");
+		}
+
 		public void UseSpecialBomb(string coordinates, BombType bombType)
 		{
 			if (isGameOver || currentPlayer == null || player1 == null || player2 == null) return;
@@ -166,6 +193,9 @@ namespace LaivuMusis
 			Console.Clear();
 			Console.WriteLine($"{currentPlayer.Name} uses {bombType} bomb at {coordinates}");
 			Console.WriteLine($"Board states updated in {(currentPlayer == player1 ? Player1BoardFile : Player2BoardFile)}");
+
+			// Display special bomb counts for both players
+			DisplaySpecialBombCounts();
 
 			if (bombType == BombType.Radar)
 			{
@@ -238,5 +268,31 @@ namespace LaivuMusis
 		public Player? CurrentPlayer => currentPlayer;
 		public Player? Player1 => player1;
 		public Player? Player2 => player2;
+
+		~Game()
+		{
+			try
+			{
+				// Save final game state if game is still in progress
+				if (!isGameOver && player1 != null && player2 != null)
+				{
+					SaveBoardStates();
+				}
+
+				// Clean up any temporary files or resources
+				if (File.Exists(Player1BoardFile))
+				{
+					File.AppendAllText(Player1BoardFile, "\n--- GAME CLEANUP ---\n");
+				}
+				if (File.Exists(Player2BoardFile))
+				{
+					File.AppendAllText(Player2BoardFile, "\n--- GAME CLEANUP ---\n");
+				}
+			}
+			catch
+			{
+				// Ignore any errors during cleanup
+			}
+		}
 	}
 }

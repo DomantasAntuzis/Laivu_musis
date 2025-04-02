@@ -1,3 +1,0 @@
---- GAME START ---
-Player2 starts
-Player2 N14 MISS

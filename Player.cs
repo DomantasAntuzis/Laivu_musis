@@ -157,6 +157,11 @@ namespace LaivuMusis
 			return specialBombs.ContainsKey(bombType) && specialBombs[bombType] > 0;
 		}
 
+		public int GetBombCount(BombType bombType)
+		{
+			return specialBombs.ContainsKey(bombType) ? specialBombs[bombType] : 0;
+		}
+
 		public bool AreAllShipsDestroyed()
 		{
 			return ships.TrueForAll(s => s.IsDestroyed);

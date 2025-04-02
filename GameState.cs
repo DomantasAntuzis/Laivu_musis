@@ -45,5 +45,21 @@ namespace LaivuMusis
 				writer.WriteLine();
 			}
 		}
+
+		~GameState()
+		{
+			try
+			{
+				// Ensure the game state file is properly closed
+				if (File.Exists(filePath))
+				{
+					File.AppendAllText(filePath, "\n--- GAME STATE CLEANUP ---\n");
+				}
+			}
+			catch
+			{
+				// Ignore any errors during cleanup
+			}
+		}
 	}
 }

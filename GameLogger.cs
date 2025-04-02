@@ -55,6 +55,22 @@ namespace LaivuMusis
 			AppendToLog("--- GAME END ---");
 		}
 
+		~GameLogger()
+		{
+			try
+			{
+				// Ensure the log file is properly closed
+				if (File.Exists(logFilePath))
+				{
+					File.AppendAllText(logFilePath, "--- LOGGER CLEANUP ---\n");
+				}
+			}
+			catch
+			{
+				// Ignore any errors during cleanup
+			}
+		}
+
 		private void AppendToLog(string message)
 		{
 			File.AppendAllText(logFilePath, message + "\n");

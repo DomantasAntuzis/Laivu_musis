@@ -10,7 +10,7 @@ namespace LaivuMusis
 			Console.WriteLine("Welcome to Laivų Mūšis!");
 
 			// Read board size from configuration file
-			int boardSize = ReadBoardSizeFromConfig("taisykles.txt");
+			int boardSize = ReadBoardSizeFromConfig("game_rules_config.txt");
 			if (boardSize == 0)
 			{
 				Console.WriteLine("Error: Could not read board size from configuration file.");

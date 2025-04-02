@@ -1,8 +1,8 @@
-Lentos dydis: 15
+Lentos dydis: 10
 Laivų kiekis:
 - 1x 5 ilgio
 - 2x 4 ilgio
-- 7x 3 ilgio
+- 3x 3 ilgio
 - 5x 2 ilgio
 Bombų kiekis:
 - 2x Radar
