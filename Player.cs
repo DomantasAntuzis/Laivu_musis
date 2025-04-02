@@ -11,18 +11,22 @@ namespace LaivuMusis
 		private readonly List<Ship> ships;
 		private readonly Dictionary<BombType, int> specialBombs;
 		private readonly HashSet<string> attackedPositions;
+		private readonly GameRules rules;
 
-		public Player(string name, int boardSize)
+		public Player(string name, int boardSize, GameRules rules)
 		{
 			this.name = name;
 			this.board = new GameBoard(boardSize);
 			this.ships = new List<Ship>();
 			this.attackedPositions = new HashSet<string>();
-			this.specialBombs = new Dictionary<BombType, int>
+			this.rules = rules;
+			this.specialBombs = new Dictionary<BombType, int>();
+
+			// Initialize bomb counts from rules
+			foreach (var bomb in rules.SpecialBombs)
 			{
-				{ BombType.Radar, 2 },
-				{ BombType.Explosive, 2 }
-			};
+				specialBombs[bomb.Key] = bomb.Value;
+			}
 		}
 
 		public void LoadConfiguration(string configPath)
@@ -81,6 +85,12 @@ namespace LaivuMusis
 					{
 						throw new ArgumentException($"Invalid line format: {line}");
 					}
+				}
+
+				// Validate ship counts after loading all ships
+				if (!rules.ValidateShipPlacement(ships))
+				{
+					throw new InvalidOperationException("Invalid ship configuration. Ship counts do not match the required configuration.");
 				}
 			}
 			catch (Exception ex)

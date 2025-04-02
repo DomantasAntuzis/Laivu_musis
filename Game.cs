@@ -29,8 +29,8 @@ namespace LaivuMusis
 
 		public void InitializeGame(int boardSize)
 		{
-			player1 = new Player("Player1", boardSize);
-			player2 = new Player("Player2", boardSize);
+			player1 = new Player("Player1", boardSize, rules);
+			player2 = new Player("Player2", boardSize, rules);
 			gameBoard = new GameBoard(boardSize);
 
 			// Randomly select starting player
