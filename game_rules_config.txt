@@ -5,7 +5,7 @@ Laivų kiekis:
 - 3x 3 ilgio
 - 5x 2 ilgio
 Bombų kiekis:
-- 2x Radar
+- 3x Radar
 - 3x Explosive wave
 
 Configuration File Format:

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Laivu_musis\\LaivuMusis.csproj": {}
+    "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\LaivuMusis.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Laivu_musis\\LaivuMusis.csproj": {
+    "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\LaivuMusis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Laivu_musis\\LaivuMusis.csproj",
+        "projectUniqueName": "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\LaivuMusis.csproj",
         "projectName": "LaivuMusis",
-        "projectPath": "C:\\Projects\\Laivu_musis\\LaivuMusis.csproj",
+        "projectPath": "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\LaivuMusis.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Laivu_musis\\obj\\",
+        "outputPath": "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

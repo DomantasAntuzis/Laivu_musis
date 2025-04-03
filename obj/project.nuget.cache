@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wvOkOJIp8yc=",
+  "dgSpecHash": "dR09gIskz3g=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\Laivu_musis\\LaivuMusis.csproj",
+  "projectFilePath": "C:\\Projects\\test\\Laivu_musis\\Laivu_musis\\LaivuMusis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
